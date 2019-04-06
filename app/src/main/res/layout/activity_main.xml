@@ -11,11 +11,14 @@
         android:layout_height="wrap_content"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        <!-- SOS: This stumped me for a LONG time. It's only allowed to add id, width & height to an
-        included layout, so scrollFlags wouldn't work, it had to be defined in the main definition! -->
-        <include
+        <!-- SOS: <include> can only contain id, width & height! Thus, if I want to add scrollFlags,
+        I have to add it in toolbar_main, which I can't because that layout will be used by the other
+        activities that DON'T want scroll. So, I have to add a <Toolbar> directly in here. -->
+        <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            layout="@layout/toolbar_main" />
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs"
@@ -23,9 +26,6 @@
             android:layout_height="wrap_content" />
     </android.support.design.widget.AppBarLayout>
 
-    <!-- SOS: app:layout_behavior tells any toolbar w scrollFlags that I want it to scroll in response
-    to the scrolling of this pager. Note that 3 of the 4 fragments of the pager are non-scrollable,
-    only TopFragment's layout defines a NestedScrollView -->
     <android.support.v4.view.ViewPager
         android:id="@+id/pager"
         android:layout_width="match_parent"

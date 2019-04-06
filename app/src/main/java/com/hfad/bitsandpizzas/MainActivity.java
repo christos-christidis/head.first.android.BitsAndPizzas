@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -53,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_create_order:
                 Intent intent = new Intent(this, OrderActivity.class);
                 startActivity(intent);
-                // when we handle a case, we return true
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
         public Fragment getItem(int position) {
             switch (position) {
                 case 0:
-                    return new TopFragment();
+                    return new HomeFragment();
                 case 1:
                     return new PizzasFragment();
                 case 2:
@@ -83,7 +83,6 @@ public class MainActivity extends AppCompatActivity {
                 case 3:
                     return new StoresFragment();
                 default:
-                    // SOS: this protects against program/ly setting non-existent page in the future.
                     return new StoresFragment();
             }
         }
@@ -102,6 +101,15 @@ public class MainActivity extends AppCompatActivity {
                 default:
                     return getResources().getText(R.string.store_tab);
             }
+        }
+    }
+
+    static void setUpToolbar(AppCompatActivity activity) {
+        Toolbar toolbar = activity.findViewById(R.id.toolbar);
+        activity.setSupportActionBar(toolbar);
+        ActionBar actionBar = activity.getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
         }
     }
 }

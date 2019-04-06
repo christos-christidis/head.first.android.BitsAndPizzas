@@ -8,21 +8,6 @@
     <string name="pasta_tab">Pastas</string>
     <string name="store_tab">Stores</string>
 
-    <string-array name="pizzas">
-        <item>Diavolo</item>
-        <item>Funghi</item>
-    </string-array>
-
-    <string-array name="pastas">
-        <item>Spaghetti</item>
-        <item>Lasagne</item>
-    </string-array>
-
-    <string-array name="stores">
-        <item>Cambridge</item>
-        <item>Sebastopol</item>
-    </string-array>
-
     <string name="company_name">Bits and Pizzas</string>
     <string name="restaurant_image">Restaurant image</string>
     <string name="home_text">Since we opened our doors in 2017, Bits and Pizzas
@@ -33,4 +18,8 @@
 
     <string name="order_name_hint">Please enter your name</string>
     <string name="order_details_hint">Please enter your order</string>
+    <string name="description_pasta_image">Pasta image</string>
+    <string name="description_pizza_image">Pizza image</string>
+    <string name="description_store_image">Store image</string>
+    <string name="description_cardview_image">Cardview image</string>
 </resources>

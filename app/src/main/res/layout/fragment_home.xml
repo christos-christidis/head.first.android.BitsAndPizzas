@@ -1,10 +1,9 @@
-<?xml version="1.0" encoding="utf-8"?><!-- SOS: the CoordinatorLayout only listens to NestedScrollView events, it does not respond to
- scrolling of plain list-views. But note how in V3 it does respond to scrolling of recycler-views! -->
+<?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TopFragment">
+    tools:context=".HomeFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
