@@ -2,7 +2,12 @@ package com.hfad.bitsandpizzas;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.MenuItemCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ShareActionProvider;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        MyPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        ViewPager pager = findViewById(R.id.pager);
+        pager.setAdapter(pagerAdapter);
+
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(pager);
     }
 
     @Override
@@ -45,6 +57,51 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private class MyPagerAdapter extends FragmentPagerAdapter {
+
+        MyPagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public int getCount() {
+            return 4;
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            switch (position) {
+                case 0:
+                    return new TopFragment();
+                case 1:
+                    return new PizzasFragment();
+                case 2:
+                    return new PastasFragment();
+                case 3:
+                    return new StoresFragment();
+                default:
+                    // SOS: this protects against program/ly setting non-existent page in the future.
+                    return new StoresFragment();
+            }
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            switch (position) {
+                case 0:
+                    return getResources().getText(R.string.home_tab);
+                case 1:
+                    return getResources().getText(R.string.pizza_tab);
+                case 2:
+                    return getResources().getText(R.string.pasta_tab);
+                case 3:
+                    return getResources().getText(R.string.store_tab);
+                default:
+                    return getResources().getText(R.string.store_tab);
+            }
         }
     }
 }
